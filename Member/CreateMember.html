@@ -1,0 +1,142 @@
+<div class="container">
+    <main role="main" class="pb-3">
+
+        <header class="mb-4">
+            <h3 class="text-primary-color">Add Member</h3>
+        </header>
+        <form method="post">
+
+            <!-- Step navigation -->
+            <ul class="nav nav-tabs mb-4" id="addMemberTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="member-tab" data-bs-toggle="tab" data-bs-target="#member-info"
+                        type="button" role="tab">Member Info</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="health-tab" data-bs-toggle="tab" data-bs-target="#health-info"
+                        type="button" role="tab">Health Data</button>
+                </li>
+            </ul>
+
+            <!-- Tab content -->
+            <div class="tab-content">
+                <!-- Member Info -->
+                <div class="tab-pane fade show active" id="member-info" role="tabpanel" aria-labelledby="member-tab">
+                    <div class="section-header mb-3">
+                        <h5 class="text-primary fw-bold">Personal Information</h5>
+                        <hr class="mt-2">
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">Name</label>
+                            <input name="Name" type="text" class="form-control" />
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">Email</label>
+                            <input name="Email" type="text" class="form-control" />
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">Phone</label>
+                            <input name="Phone" type="text" class="form-control" />
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">DateOfBirth</label>
+                            <input name="DateOfBirth" class="form-control" type="date" />
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">Gender</label>
+                            <select name="Gender" class="form-select">
+                                <option value="">-- Select Gender --</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="section-header mb-3 mt-4">
+                        <h5 class="text-primary fw-bold">Address Information</h5>
+                        <hr class="mt-2">
+                    </div>
+                    <div class="row g-3">
+
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">BuildingNumber</label>
+                            <input name="BuildingNumber" class="form-control" />
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">Street</label>
+                            <input name="Street" class="form-control" />
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">City</label>
+                            <input name="City" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Health Data -->
+                <div class="tab-pane fade" id="health-info" role="tabpanel" aria-labelledby="health-tab">
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">Height</label>
+                            <input name="Height" class="form-control" />
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">Weight</label>
+                            <input name="Weight" class="form-control" />
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">Blood Type</label>
+                            <select name="BloodType" class="form-select">
+                                <option value="">Select</option>
+                                <option>A+</option>
+                                <option>A-</option>
+                                <option>B+</option>
+                                <option>B-</option>
+                                <option>O+</option>
+                                <option>O-</option>
+                                <option>AB+</option>
+                                <option>AB-</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">Note</label>
+                            <input name="Note" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="d-flex justify-content-end gap-3 mt-4">
+                <a asp-controller="Member" asp-action="Index" class="btn btn-outline-secondary px-4">
+                    <i class="bi bi-arrow-left me-2"></i> Back to List
+                </a>
+
+                <button type="submit" class="btn btn-primary px-4">
+                    <i class="bi bi-plus-circle me-2"></i> Add
+                </button>
+            </footer>
+
+        </form>
+
+    </main>
+</div>
+<script src="../js/jquery.validate.min.js"></script>
+<script src="../js/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    // Preview photo before upload
+    document.getElementById('photoInput').addEventListener('change', function (e) {
+        var file = e.target.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var preview = document.getElementById('photoPreview');
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
